@@ -1,0 +1,31 @@
+{
+    "name": "Just give me the recipe",
+    "version": "1.0",
+    "description": "Scrolls you to the actual recipe on a food blog/recipe site, skipping all of the storytelling fluff.",
+    "permissions": ["storage", "activeTab"],
+    "background": {
+   		"scripts":  ["background.js"],
+   		"persistent": false
+    },
+    "browser_action": {
+		"default_icon": {
+            "16": "images/favicon.png",
+            "32": "images/favicon32.png"
+          },
+            "default_title": "Just give me the recipe",
+            "default_popup": "popup.html"
+    },
+    "content_scripts": [
+		{
+			"matches": ["*://*/*"],
+			"all_frames": true,
+			"js": ["content_scripts.js"],
+			"run_at": "document_idle"
+		}
+	],
+    "icons": {
+        "16": "images/favicon.png",
+        "32": "images/favicon32.png"
+    },
+    "manifest_version": 2
+}
