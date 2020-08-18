@@ -19,7 +19,7 @@
 		{
 			"matches": ["*://*/*"],
 			"all_frames": true,
-			"js": ["content_scripts.js"],
+			"js": ["content_scripts.js", "background.js", "popup.js"],
 			"run_at": "document_idle"
 		}
 	],
