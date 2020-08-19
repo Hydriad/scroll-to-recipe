@@ -1,4 +1,8 @@
 // Copyright 2020 Hayley Schluter. All rights reserved.
+// constants
+const SCROLL_STRING = 'Scroll to recipe';
+const LEFT_ARROW = '<';
+const RIGHT_ARROW = '>';
 
 // If a heading has been found with the right text content, scroll to it.
 const scrollToRecipe = (heading) => {
@@ -9,25 +13,30 @@ const scrollToRecipe = (heading) => {
 
 // makes it so that scrolling to this element still displays element in view
 const styleHeading = (heading) => {
-	heading.style.scrollMargin = '100px';
+	heading.style.scrollMargin = '80px';
 };
 
-// Search through all header elements on the page. if one is found equaling the word "Ingredients", return it.
+// Search through all heading elements on the page. if one is found with content equaling the word "Ingredients", return it.
 const findRecipeHeadings = (options) => {
-	const headingsOnPage = document.querySelectorAll("h1, h2, h3, h4, h5");
+	const headingElements = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6')); // classic heading elements
+	const roleHeadings = Array.from(document.querySelectorAll('[role="heading"]')); // divs with a role of "heading" (used for accessibility)
+	const allHeadings = headingElements.concat(roleHeadings); 
+
 	// regex which allows for two characters before and after 'ingredients'
 	const regex = /^.{0,2}ingredients.{0,2}$/i;
 
-	for (let i = 0; i < headingsOnPage.length; ++i) {
-		const headingText = headingsOnPage[i].textContent.toLowerCase();
+	for (let i = 0; i < allHeadings.length; ++i) {
+		const head = allHeadings[i];
+		const headingText = head.textContent.toLowerCase();
 
 		// if 'ingredients' heading is found, break from the loop and return the element.
 		if (regex.test(headingText)) {
-			styleHeading(headingsOnPage[i]);
-			return headingsOnPage[i];
+			styleHeading(head);
+			return head;
 		}
 	}
 
+	// return null if no matching headings were found.
 	return null;
 };
 
@@ -41,13 +50,13 @@ const toggleExpand = (e, scrollBtnText, icon) => {
 	const val = e.target.textContent;
 
     // if user is minimizing, hide text.
-    if (val === '>') { 
-    	 e.target.textContent = '<';
+    if (val === RIGHT_ARROW) { 
+    	 e.target.textContent = LEFT_ARROW;
     	 scrollBtnText.classList.add('hidden');
 
     // otherwise user is expanding, so show text.    
     } else { 
-    	e.target.textContent = '>';
+    	e.target.textContent = RIGHT_ARROW;
     	 scrollBtnText.classList.remove('hidden');
     }
 }
@@ -56,7 +65,7 @@ const toggleExpand = (e, scrollBtnText, icon) => {
 const renderScrollButton = (buttonClick) => {
 	// create container for buttons and give it a class
 	const btnContainer = document.createElement('div');
-	btnContainer.classList.add('__recipe_extension__');
+	btnContainer.classList.add('__scroll_to_recipe_extension__');
 
 	// create button that does the scrolling
 	const scrollBtn = document.createElement('button');
@@ -72,9 +81,10 @@ const renderScrollButton = (buttonClick) => {
 
 	// create span element and add it to scroll button
 	const scrollBtnText = document.createElement('span');
-	scrollBtnText.textContent += 'Scroll to recipe';
+	scrollBtnText.textContent += SCROLL_STRING;
 	scrollBtn.appendChild(scrollBtnText);
 
+	scrollBtn.title = SCROLL_STRING;
 	scrollBtn.onclick = buttonClick;
 
 	// add button to container
@@ -83,7 +93,7 @@ const renderScrollButton = (buttonClick) => {
 	// create second button which will be the expand/minimize option
 	const toggleExpandBtn = document.createElement('button');
 	toggleExpandBtn.classList.add('toggle_expand');
-	toggleExpandBtn.textContent = '>';
+	toggleExpandBtn.textContent = RIGHT_ARROW;
 	toggleExpandBtn.onclick = (e) => toggleExpand(e, scrollBtnText, icon);
 
 	// add second button to container
@@ -93,6 +103,7 @@ const renderScrollButton = (buttonClick) => {
 	document.body.appendChild(btnContainer);
 };
 
+// 700 ms after page load, search page for 'ingredients' heading
 setTimeout(() => {
 	const heading = findRecipeHeadings(); 
     // if heading exists, render a button in the DOM with the option to scroll to that heading.
@@ -100,4 +111,4 @@ setTimeout(() => {
 		const buttonClick = () => scrollToRecipe(heading);
 		renderScrollButton(buttonClick);
 	}
-}, 500);
+}, 700);

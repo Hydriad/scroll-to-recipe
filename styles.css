@@ -1,17 +1,14 @@
 /* COLORS
 hot pink: 		#ff0040
-lighter pink 	#ff4f7b
-lightest pink 	#ff84a3
+light  pink 	#ff4f7b
 dark pink		#d01544
 white
 */
 
-.__recipe_extension__ {
+.__scroll_to_recipe_extension__ {
 	position: fixed;
 	top: 0;
 	right: 0;
-	border: none;
-	border-radius: 0;
 	box-shadow: -1px 3px 5px #222222;
 	margin: 0 0 0 0;
 	padding: 0;
@@ -23,82 +20,71 @@ white
 	opacity: 1;
 }
 
-.__recipe_extension__ button {
+/* prevent page styles from overriding our buttons -- don't mess. */
+.__scroll_to_recipe_extension__ button, 
+.__scroll_to_recipe_extension__ button:hover,
+.__scroll_to_recipe_extension__ button:focus,
+.__scroll_to_recipe_extension__ button span,
+.__scroll_to_recipe_extension__ button img {
 	width: unset;
-	height: 22px;
-	margin: 0;
-	padding: 0 3px;
 	color: white;
-	background-color: #ff0040;
+	margin: 0;
+	min-width: unset;
+	max-width: unset;
+	min-height: unset;
+	max-height: unset;
+	text-transform: none;
+	letter-spacing: normal;
+	font-weight: normal;
 	font-family: 'Consolas', 'Arial';
-	font-size: 10px;
-	box-shadow: none;
+	font-size: 12px;
 	border: none;
 	border-radius: 0;
+	box-shadow: none;
+	position: relative;
 	line-height: normal;
+	opacity: 1;
+	outline: none;
+}
+
+.__scroll_to_recipe_extension__ button {
+	height: 22px;
+	padding: 0 3px;
+	background-color: #ff0040;
 	display: flex;
 	align-items: center;
-	opacity: 1;
-	position: relative;
-	text-transform: none;
-	font-weight: normal;
-	letter-spacing: normal;
+	position: relative;	
 }
 
-.__recipe_extension__ button span {
-	color: white;
+.__scroll_to_recipe_extension__ button span {
 	background-color: transparent;
-	font-family: 'Consolas', 'Arial';
-	font-size: 11px;
-	line-height: normal;
-	margin: 0;
 	padding: 0 0 0 3px;
-	opacity: 1;
-	box-shadow: none;
-	text-transform: none;
-	font-weight: normal;
-	letter-spacing: normal;
 }
 
-.__recipe_extension__ button.scroll:hover {
+.__scroll_to_recipe_extension__ button.scroll:hover {
 	background-color: #d01544;
 	cursor: pointer;
 }
 
-.__recipe_extension__ button.toggle_expand {
+.__scroll_to_recipe_extension__ button.toggle_expand {
 	background-color: #ff4f7b;
-	cursor: pointer;
 }
-.__recipe_extension__ button.toggle_expand:hover {
+
+.__scroll_to_recipe_extension__ button.toggle_expand:hover {
 	background-color: #d01544;
 	cursor: pointer;
 }
 
-
-.__recipe_extension__ button:focus {
-	border: 0;
-	border-radius: 0;
-	outline: none;
+.__scroll_to_recipe_extension__ button:focus {
 	background-color: #ff0040;
-	color: white;
 }
 
-.__recipe_extension__ button img {
-	width: 18px;
-
-	border: none;
-	border-radius: 0;
-	opacity: 1;
-	margin: 0;
+.__scroll_to_recipe_extension__ button img {
+	width: 17px;
 	padding: 0;
-	position: relative;
 	height: unset;
-	box-shadow: none;
 }
 
-.__recipe_extension__ button.toggle_expand {
-
-}
-.__recipe_extension__ .hidden {
+.__scroll_to_recipe_extension__ .hidden {
 	display: none;
 }
