@@ -1,15 +1,11 @@
 {
-    "name": "Just give me the recipe",
+    "name": "Scroll to Recipe",
     "version": "1.0",
     "description": "Scrolls you to the actual recipe on a food blog/recipe site, skipping all of the storytelling fluff.",
     "permissions": ["storage", "activeTab"],
-    "background": {
-   		"scripts":  ["background.js"],
-   		"persistent": false
-    },
     "browser_action": {
 		"default_icon": {
-            "16": "images/favicon.png",
+            "16": "images/favicon16.png",
             "32": "images/favicon32.png"
           },
             "default_title": "Just give me the recipe",
@@ -19,13 +15,15 @@
 		{
 			"matches": ["*://*/*"],
 			"all_frames": true,
-			"js": ["content_scripts.js", "background.js", "popup.js"],
+			"js": ["content_scripts.js", "popup.js"],
+			"css": ["styles.css"],
 			"run_at": "document_idle"
 		}
 	],
     "icons": {
-        "16": "images/favicon.png",
+        "16": "images/favicon16.png",
         "32": "images/favicon32.png"
     },
+    "web_accessible_resources": ["images/favicon32-black.png", "images/favicon32-white.png"],
     "manifest_version": 2
 }

@@ -1,0 +1,104 @@
+/* COLORS
+hot pink: 		#ff0040
+lighter pink 	#ff4f7b
+lightest pink 	#ff84a3
+dark pink		#d01544
+white
+*/
+
+.__recipe_extension__ {
+	position: fixed;
+	top: 0;
+	right: 0;
+	border: none;
+	border-radius: 0;
+	box-shadow: -1px 3px 5px #222222;
+	margin: 0 0 0 0;
+	padding: 0;
+	background-color: transparent;
+	z-index: 2147483647;
+	display: flex;
+	align-items: center;
+	justify-content: right;
+	opacity: 1;
+}
+
+.__recipe_extension__ button {
+	width: unset;
+	height: 22px;
+	margin: 0;
+	padding: 0 3px;
+	color: white;
+	background-color: #ff0040;
+	font-family: 'Consolas', 'Arial';
+	font-size: 10px;
+	box-shadow: none;
+	border: none;
+	border-radius: 0;
+	line-height: normal;
+	display: flex;
+	align-items: center;
+	opacity: 1;
+	position: relative;
+	text-transform: none;
+	font-weight: normal;
+	letter-spacing: normal;
+}
+
+.__recipe_extension__ button span {
+	color: white;
+	background-color: transparent;
+	font-family: 'Consolas', 'Arial';
+	font-size: 11px;
+	line-height: normal;
+	margin: 0;
+	padding: 0 0 0 3px;
+	opacity: 1;
+	box-shadow: none;
+	text-transform: none;
+	font-weight: normal;
+	letter-spacing: normal;
+}
+
+.__recipe_extension__ button.scroll:hover {
+	background-color: #d01544;
+	cursor: pointer;
+}
+
+.__recipe_extension__ button.toggle_expand {
+	background-color: #ff4f7b;
+	cursor: pointer;
+}
+.__recipe_extension__ button.toggle_expand:hover {
+	background-color: #d01544;
+	cursor: pointer;
+}
+
+
+.__recipe_extension__ button:focus {
+	border: 0;
+	border-radius: 0;
+	outline: none;
+	background-color: #ff0040;
+	color: white;
+}
+
+.__recipe_extension__ button img {
+	width: 18px;
+
+	border: none;
+	border-radius: 0;
+	opacity: 1;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	height: unset;
+	box-shadow: none;
+}
+
+.__recipe_extension__ button.toggle_expand {
+
+}
+.__recipe_extension__ .hidden {
+	display: none;
+}
