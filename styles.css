@@ -67,12 +67,15 @@ white
 }
 
 .__scroll_to_recipe_extension__ button.toggle_expand {
+	padding: 0 1px;
 	background-color: #ff4f7b;
+	color: #ff4f7b; /* make arrow color same as its background so it's only visible on hover */
 }
 
 .__scroll_to_recipe_extension__ button.toggle_expand:hover {
 	background-color: #d01544;
 	cursor: pointer;
+	color: white;
 }
 
 .__scroll_to_recipe_extension__ button:focus {
@@ -83,6 +86,7 @@ white
 	width: 17px;
 	padding: 0;
 	height: unset;
+	background-color: transparent;
 }
 
 .__scroll_to_recipe_extension__ .hidden {

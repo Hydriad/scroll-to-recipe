@@ -3,6 +3,8 @@
 const SCROLL_STRING = 'Scroll to recipe';
 const LEFT_ARROW = '<';
 const RIGHT_ARROW = '>';
+const MINIMIZE = 'Minimize';
+const EXPAND = 'Expand';
 
 // If a heading has been found with the right text content, scroll to it.
 const scrollToRecipe = (heading) => {
@@ -53,11 +55,13 @@ const toggleExpand = (e, scrollBtnText, icon) => {
     if (val === RIGHT_ARROW) { 
     	 e.target.textContent = LEFT_ARROW;
     	 scrollBtnText.classList.add('hidden');
+    	 e.target.title = EXPAND;
 
     // otherwise user is expanding, so show text.    
     } else { 
     	e.target.textContent = RIGHT_ARROW;
-    	 scrollBtnText.classList.remove('hidden');
+    	scrollBtnText.classList.remove('hidden');
+    	e.target.title = MINIMIZE;
     }
 }
 
@@ -94,6 +98,7 @@ const renderScrollButton = (buttonClick) => {
 	const toggleExpandBtn = document.createElement('button');
 	toggleExpandBtn.classList.add('toggle_expand');
 	toggleExpandBtn.textContent = RIGHT_ARROW;
+	toggleExpandBtn.title = MINIMIZE;
 	toggleExpandBtn.onclick = (e) => toggleExpand(e, scrollBtnText, icon);
 
 	// add second button to container
